@@ -1,4 +1,5 @@
-const express = require('express')
+import express from 'express';
+import Home from './containers/Home';
 const app = express()
 const port = 3000
   
@@ -17,5 +18,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on http:localhost:${port}`)
+  console.log(`Example app listening on http://localhost:${port}`)
 })
