@@ -1,16 +1,22 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Home from '../containers/Home';
+import { StaticRouter } from "react-router-dom/server";
+import Routes from '../../Routes';
 
 const app = express();
 const port = 3000;
-const content = renderToString(<Home />);
 
 // 发现客户端有请求静态文件，就去根目录 public 里去找
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
+  const content = renderToString(
+    <StaticRouter location={req.path}>
+      {Routes}
+    </StaticRouter>
+  );
+
   res.send(`
     <html>
       <head>
