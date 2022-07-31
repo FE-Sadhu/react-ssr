@@ -2,11 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "dev": "npm-run-all --parallel dev:**",
     "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\"",
-    "dev:build": "webpack --config webpack.server.js --watch"
+    "dev:build:server": "webpack --config webpack.server.js --watch",
+    "dev:build:client": "webpack --config webpack.client.js --watch"
   },
   "keywords": [],
   "author": "",
