@@ -1,7 +1,7 @@
 import express from 'express';
-import Home from './containers/Home';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import Home from '../containers/Home';
 
 const app = express();
 const port = 3000;
