@@ -10,11 +10,11 @@ const Home = (props) => {
 
   function getList() {
     return <ul>{props.list.map(item => {
-      return <li key={item.id}>{item.title}</li>
+      return <li key={item.id}>{item.login}</li>
     })}
     </ul>
   };
-  
+
   return <div>
     <Header />
     <div>welcome to home, {props.name}!!!</div>
