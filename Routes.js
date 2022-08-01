@@ -1,13 +1,14 @@
-import React from 'react';
-import { Route, Routes } from 'react-router';
 import Home from './src/containers/Home';
 import Login from './src/containers/Login'
+import React from 'react'
 
-export default (
-  <div>
-    <Routes>
-      <Route path='/' exact element={<Home />} />
-      <Route path='/login' exact element={<Login />} />
-    </Routes>
-  </div>
-)
+export default [{
+  path: '/',
+  element: <Home />,
+  loadData: Home.loadData,
+  key: 'home'
+}, {
+  path: '/login',
+  element: <Login />,
+  key: 'login'
+}];
