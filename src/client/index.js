@@ -1,8 +1,7 @@
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { Route, Routes } from 'react-router';
+import { BrowserRouter, Route } from 'react-router-dom';
 import routes from '../../Routes';
 import getStore from '../store';
 
@@ -10,11 +9,11 @@ const App = () => {
   return (
     <Provider store={getStore()}>
       <BrowserRouter>
-        <Routes>
+        <div>
           {routes.map(route => (
-            <Route key={route.key} {...route} />
+            <Route {...route} />
           ))}
-        </Routes>
+        </div>
       </BrowserRouter>
     </Provider>
   )

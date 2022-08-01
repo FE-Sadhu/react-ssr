@@ -4,11 +4,19 @@ import React from 'react'
 
 export default [{
   path: '/',
-  element: <Home />,
+  component: Home,
+  // exact: true,
   loadData: Home.loadData,
-  key: 'home'
+  key: 'home',
+  routes: [{
+    path: '/ttt',
+    component: Login,
+    exact: true,
+    key: 'ttt',
+  }]
 }, {
   path: '/login',
-  element: <Login />,
+  component: Login,
+  exact: true,
   key: 'login'
 }];
