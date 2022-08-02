@@ -1,19 +1,10 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter, Route } from "react-router-dom";
-import routes from '../../Routes';
 import { Provider } from 'react-redux';
-import getStore from '../store';
-import { matchRoutes } from 'react-router-config';
 
-export const render = (req) => {
 
-  const store = getStore();
-
-  const matchedRoutes = matchRoutes(routes, req.path);
-
-  console.log(matchedRoutes);
-
+export const render = (store, routes, req) => {
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path}>

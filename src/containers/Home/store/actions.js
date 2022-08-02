@@ -1,3 +1,4 @@
+import axios from "axios";
 import { CHANGE_LIST } from "./constants";
 
 const changeList = list => ({
@@ -6,9 +7,10 @@ const changeList = list => ({
 });
 
 export const getHomeList = () => {
-  return async (dispatch) => {
-    const response = await fetch('https://api.github.com/users')
-    const list =  response.ok && await response.json();
-    dispatch(changeList(list.slice(0, 4)))
+  return (dispatch) => {
+    return axios.get('https://api.github.com/users').then(response => {
+      const list = response.data;
+      dispatch(changeList(list.slice(0, 4)))
+    })
   };
 };

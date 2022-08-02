@@ -23,8 +23,10 @@ const Home = (props) => {
   </div>
 }
 
-Home.loadData = () => {
+// 根 store
+Home.loadData = (store) => {
   // 这个函数，负责在服务器端渲染之前，把这个路由需要的数据提前加载好
+  return store.dispatch(getHomeList())
 }
 
 const mapStateToProps = state => ({
