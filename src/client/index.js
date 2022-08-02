@@ -3,11 +3,11 @@ import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import routes from '../../Routes';
-import getStore from '../store';
+import { getClientStore } from '../store';
 
 const App = () => {
   return (
-    <Provider store={getStore()}>
+    <Provider store={getClientStore()}>
       <BrowserRouter>
         <div>
           {routes.map(route => (

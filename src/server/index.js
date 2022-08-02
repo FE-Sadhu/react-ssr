@@ -2,7 +2,7 @@ import express from 'express';
 import { matchRoutes } from 'react-router-config';
 import routes from '../../Routes';
 import { render } from './utils';
-import getStore from '../store';
+import { getStore } from '../store';
 
 const app = express();
 const port = 3000;

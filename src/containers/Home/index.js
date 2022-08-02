@@ -5,7 +5,7 @@ import { getHomeList } from './store/actions';
 
 const Home = (props) => {
   useEffect(() => {
-    props.getHomeList();
+    !props.list.length && props.getHomeList();
   }, [])
 
   function getList() {
