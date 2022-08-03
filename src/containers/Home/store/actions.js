@@ -6,9 +6,15 @@ const changeList = list => ({
   list
 });
 
-export const getHomeList = () => {
+export const getHomeList = (isServerInvoke) => {
+  let url = '';
+  if (isServerInvoke) {
+    url = 'https://api.github.com/users'
+  } else {
+    url = '/api/users';
+  }
   return (dispatch) => {
-    return axios.get('https://api.github.com/users').then(response => {
+    return axios.get(url).then(response => {
       const list = response.data;
       dispatch(changeList(list.slice(0, 4)))
     })
