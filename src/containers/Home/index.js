@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/Header';
 import { getHomeList } from './store/actions';
 
 const Home = (props) => {
@@ -16,7 +15,6 @@ const Home = (props) => {
   };
 
   return <div>
-    <Header />
     <div>welcome to home, {props.name}!!!</div>
     {getList()}
     <button onClick={() => alert('客户端中绑定事件成功')}>Click</button>

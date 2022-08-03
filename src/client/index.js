@@ -1,7 +1,8 @@
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import { BrowserRouter } from 'react-router-dom';
 import routes from '../Routes';
 import { getClientStore } from '../store';
 
@@ -10,9 +11,7 @@ const App = () => {
     <Provider store={getClientStore()}>
       <BrowserRouter>
         <div>
-          {routes.map(route => (
-            <Route {...route} />
-          ))}
+          {renderRoutes(routes)}
         </div>
       </BrowserRouter>
     </Provider>
