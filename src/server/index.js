@@ -1,6 +1,6 @@
 import express from 'express';
 import { matchRoutes } from 'react-router-config';
-import routes from '../../Routes';
+import routes from '../Routes';
 import { render } from './utils';
 import { getStore } from '../store';
 import proxy from 'express-http-proxy';

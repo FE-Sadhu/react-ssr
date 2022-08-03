@@ -1,5 +1,5 @@
-import Home from './src/containers/Home';
-import Login from './src/containers/Login'
+import Home from './containers/Home';
+import Login from './containers/Login'
 import React from 'react'
 
 export default [{
