@@ -1,5 +1,6 @@
-import axios from "axios";
 import { CHANGE_LIST } from "./constants";
+import { serverAxios } from '../../../server/request';
+import { clientAxios } from '../../../client/request';
 
 const changeList = list => ({
   type: CHANGE_LIST,
@@ -7,14 +8,9 @@ const changeList = list => ({
 });
 
 export const getHomeList = (isServerInvoke) => {
-  let url = '';
-  if (isServerInvoke) {
-    url = 'https://api.github.com/users'
-  } else {
-    url = '/api/users';
-  }
+  const request = isServerInvoke ? serverAxios : clientAxios;
   return (dispatch) => {
-    return axios.get(url).then(response => {
+    return request.get('/users').then(response => {
       const list = response.data;
       dispatch(changeList(list.slice(0, 4)))
     })

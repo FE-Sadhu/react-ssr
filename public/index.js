@@ -380,6 +380,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 
 /***/ }),
 
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"clientAxios\": () => (/* binding */ clientAxios)\n/* harmony export */ });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar clientAxios = axios__WEBPACK_IMPORTED_MODULE_0___default().create({\n  baseURL: '/api'\n});\n\n//# sourceURL=webpack://server/./src/client/request.js?");
+
+/***/ }),
+
 /***/ "./src/components/Header.js":
 /*!**********************************!*\
   !*** ./src/components/Header.js ***!
@@ -409,7 +420,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getHomeList\": () => (/* binding */ getHomeList)\n/* harmony export */ });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/containers/Home/store/constants.js\");\n\n\n\nvar changeList = function changeList(list) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_1__.CHANGE_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = function getHomeList(isServerInvoke) {\n  var url = '';\n\n  if (isServerInvoke) {\n    url = 'https://api.github.com/users';\n  } else {\n    url = '/api/users';\n  }\n\n  return function (dispatch) {\n    return axios__WEBPACK_IMPORTED_MODULE_0___default().get(url).then(function (response) {\n      var list = response.data;\n      dispatch(changeList(list.slice(0, 4)));\n    });\n  };\n};\n\n//# sourceURL=webpack://server/./src/containers/Home/store/actions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getHomeList\": () => (/* binding */ getHomeList)\n/* harmony export */ });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/containers/Home/store/constants.js\");\n/* harmony import */ var _server_request__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../server/request */ \"./src/server/request.js\");\n/* harmony import */ var _client_request__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../client/request */ \"./src/client/request.js\");\n\n\n\n\nvar changeList = function changeList(list) {\n  return {\n    type: _constants__WEBPACK_IMPORTED_MODULE_0__.CHANGE_LIST,\n    list: list\n  };\n};\n\nvar getHomeList = function getHomeList(isServerInvoke) {\n  var request = isServerInvoke ? _server_request__WEBPACK_IMPORTED_MODULE_1__.serverAxios : _client_request__WEBPACK_IMPORTED_MODULE_2__.clientAxios;\n  return function (dispatch) {\n    return request.get('/users').then(function (response) {\n      var list = response.data;\n      dispatch(changeList(list.slice(0, 4)));\n    });\n  };\n};\n\n//# sourceURL=webpack://server/./src/containers/Home/store/actions.js?");
 
 /***/ }),
 
@@ -454,6 +465,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Header */ \"./src/components/Header.js\");\n\n\n\nvar Login = function Login() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Header__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"welcome to Login, sadhu!!!\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"button\", {\n    onClick: function onClick() {\n      return alert('客户端中绑定事件成功 Login');\n    }\n  }, \"Click\"));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Login);\n\n//# sourceURL=webpack://server/./src/containers/Login/index.js?");
+
+/***/ }),
+
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"serverAxios\": () => (/* binding */ serverAxios)\n/* harmony export */ });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\nvar serverAxios = axios__WEBPACK_IMPORTED_MODULE_0___default().create({\n  baseURL: 'https://api.github.com'\n});\n\n//# sourceURL=webpack://server/./src/server/request.js?");
 
 /***/ }),
 
