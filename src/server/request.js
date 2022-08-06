@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export const serverAxios = axios.create({
-  baseURL: 'https://api.github.com'
+export const createServerAxios = (req) => axios.create({
+  baseURL: 'https://api.github.com',
+  headers: {
+    cookie: req.get('cookie') || ''
+  }
 })
-

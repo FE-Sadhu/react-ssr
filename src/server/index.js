@@ -21,7 +21,7 @@ app.use('/api', proxy('https://api.github.com/', {
 
 
 app.get('*', (req, res) => {
-  const store = getStore();
+  const store = getStore(req);
 
   const matchedRoutes = matchRoutes(routes, req.path);
   const promises = [];

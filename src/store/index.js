@@ -1,15 +1,15 @@
 import { applyMiddleware, legacy_createStore as createStore, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { reducer as homeReducer } from '../containers/Home/store';
-import { serverAxios } from '../server/request';
+import { createServerAxios } from '../server/request';
 import { clientAxios } from '../client/request';
 
 const reducer = combineReducers({
   home: homeReducer
 })
 
-export const getStore = () => {
-  return createStore(reducer, applyMiddleware(thunk.withExtraArgument(serverAxios)));
+export const getStore = (req) => {
+  return createStore(reducer, applyMiddleware(thunk.withExtraArgument(createServerAxios(req))));
 }
 
 export const getClientStore = () => {
