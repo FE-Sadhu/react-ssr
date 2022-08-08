@@ -1,6 +1,7 @@
 import Home from './containers/Home';
 import Login from './containers/Login'
 import App from './App';
+import NotFound from './containers/NotFound';
 
 export default [{
   path: '/',
@@ -16,5 +17,7 @@ export default [{
     component: Login,
     exact: true,
     key: 'login'
+  }, {
+    component: NotFound
   }]  
 }]

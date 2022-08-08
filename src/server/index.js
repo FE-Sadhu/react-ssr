@@ -32,7 +32,12 @@ app.get('*', (req, res) => {
   })
 
   Promise.all(promises).then(() => {
-    res.send(render(store, routes, req))
+    const context = {};
+    const html = render(store, routes, req, context);
+    if (context.NOT_FOUND) {
+      res.status(404)
+    }
+    res.send(html)
   })
   
 })
