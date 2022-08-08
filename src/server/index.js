@@ -34,7 +34,13 @@ app.get('*', (req, res) => {
   Promise.all(promises).then(() => {
     const context = {};
     const html = render(store, routes, req, context);
-    if (context.NOT_FOUND) {
+
+    // router 检测 Redirect 组件后注入的
+    if (context.action === 'REPLACE') {
+      res.redirect(301, context.url)
+      return;
+    } else if (context.NOT_FOUND) {
+      // 在 NOT_FOUND 组件注入的
       res.status(404)
     }
     res.send(html)
