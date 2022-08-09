@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { getHomeList } from './store/actions';
+
+const HomeWrapper = styled.div`
+  margin-top: 20px;
+  background: red;
+`;
 
 const Home = (props) => {
   useEffect(() => {
@@ -14,11 +20,11 @@ const Home = (props) => {
     </ul>
   };
 
-  return <div>
+  return <HomeWrapper>
     <div>welcome to home, {props.name}!!!</div>
     {getList()}
     <button onClick={() => alert('客户端中绑定事件成功')}>Click</button>
-  </div>
+  </HomeWrapper>
 }
 
 // 根 store

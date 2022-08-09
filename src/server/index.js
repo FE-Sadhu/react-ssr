@@ -37,7 +37,6 @@ app.get('*', (req, res) => {
   Promise.all(promises).then(() => {
     const context = {};
     const html = render(store, routes, req, context);
-
     // router 检测 Redirect 组件后注入的
     if (context.action === 'REPLACE') {
       res.redirect(301, context.url)
@@ -48,7 +47,6 @@ app.get('*', (req, res) => {
     }
     res.send(html)
   })
-  
 })
 
 app.listen(port, () => {

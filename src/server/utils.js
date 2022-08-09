@@ -3,21 +3,28 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
+import { ServerStyleSheet } from 'styled-components';
 
 export const render = (store, routes, req, context) => {
+  const sheet = new ServerStyleSheet();
+
   const content = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.path} context={context}>
-        <div>
-          {renderRoutes(routes)}
-        </div>
-      </StaticRouter>
-    </Provider>
-  )
+    sheet.collectStyles(
+      <Provider store={store}>
+        <StaticRouter location={req.path} context={context}>
+          <div>
+            {renderRoutes(routes)}
+          </div>
+        </StaticRouter>
+      </Provider>
+      )
+  );
+
   return `
     <html>
       <head>
         <title>ssr</title>
+        ${sheet.getStyleTags()}
       </head>
       <body>
         <div id="root">${content}</div>
