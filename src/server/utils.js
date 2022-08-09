@@ -4,6 +4,7 @@ import { StaticRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import { ServerStyleSheet } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 export const render = (store, routes, req, context) => {
   const sheet = new ServerStyleSheet();
@@ -20,10 +21,13 @@ export const render = (store, routes, req, context) => {
       )
   );
 
+  const helmet = Helmet.renderStatic();
+
   return `
     <html>
       <head>
-        <title>ssr</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         ${sheet.getStyleTags()}
       </head>
       <body>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { getHomeList } from './store/actions';
@@ -21,6 +22,10 @@ const Home = (props) => {
   };
 
   return <HomeWrapper>
+    <Helmet>
+        <title>欢迎来到海贼王主页 - one piece</title>
+        <meta name="description" content="这里描述详细的内容增加转化率，女帝女帝女帝女帝女帝女帝女帝女帝女帝女帝女帝" />
+    </Helmet>
     <div>welcome to home, {props.name}!!!</div>
     {getList()}
     <button onClick={() => alert('客户端中绑定事件成功')}>Click</button>
